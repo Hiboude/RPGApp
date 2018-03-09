@@ -4,9 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import hiboude.rpglife.QueteView.ListeDeQuete;
+import hiboude.rpglife.QueteView.Quete;
+import hiboude.rpglife.QueteView.QueteAdapter;
 
 
 /**
@@ -17,7 +23,7 @@ import android.view.ViewGroup;
  * Use the {@link Tab2#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Tab2 extends Fragment {
+public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,8 +69,16 @@ public class Tab2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
+        ListeDeQuete lq = new ListeDeQuete();
+        QueteAdapter qAdapter = new QueteAdapter(getContext(),lq);
+
+        ListView lvQuete = (ListView)rootView.findViewById(R.id.viewQuete);
+        lvQuete.setAdapter(qAdapter);
+        qAdapter.addListener(this);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab2, container, false);
+        return rootView;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -89,6 +103,17 @@ public class Tab2 extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClickNom(Quete item, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Personne");
+
+        builder.setMessage("Vous avez cliqué sur : "+item.getNom());
+        builder.setPositiveButton("oui", null);
+        builder.setNegativeButton("non", null);
+        builder.show();
     }
 
     /**
