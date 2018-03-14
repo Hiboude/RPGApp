@@ -8,13 +8,12 @@ public class Utilisateur extends Xp{
 
     private String pseudo;
     private int piece;
-    private Xp experience;
+  //  private Xp experience;
 
-    public Utilisateur(String n, int p , Xp exp)
+    public Utilisateur(String n, int p )
     {
         pseudo = n;
         piece = p ;
-        experience = exp;
     }
 
     public String getPseudo() {
@@ -25,9 +24,6 @@ public class Utilisateur extends Xp{
         return piece;
     }
 
-    public Xp getExperience() {
-        return experience;
-    }
 
     public void addPiece(int nb) {
         piece += nb;

@@ -10,14 +10,14 @@ public class Xp {
 
     private int xpRequis;
     private int xpActuel;
-    private int level;
-    private Color couleur;
+    private int niveau;
+    private int color;
 
-    public Xp(int xpR, int xpA, int lvl, Color c){
+    public Xp(int xpR, int xpA, int lvl, int c){
         xpRequis = xpR;
         xpActuel = xpA;
-        level = lvl;
-        couleur = c;
+        niveau = lvl;
+        color = c;
     }
 
     public Xp() {
@@ -25,6 +25,10 @@ public class Xp {
 
     public int getXpActuel() {
         return xpActuel;
+    }
+
+    public int getColor() {
+        return color;
     }
 
     public int getXpRequis() {
@@ -35,12 +39,12 @@ public class Xp {
         xpRequis = xpR;
     }
 
-    public int getLevel() {
-        return level;
+    public int getNiveau() {
+        return niveau;
     }
 
-    public void setLevel(int lvl) {
-        level = lvl;
+    public void setNiveau(int lvl) {
+        niveau = lvl;
     }
 
     public void addXp(int xp) {
@@ -48,7 +52,7 @@ public class Xp {
         if(xpActuel>=xpRequis) {
             xpActuel -= xpRequis;
             //incXpRequis();
-            level++;
+            niveau++;
         }
     }
 

@@ -1,6 +1,8 @@
 package hiboude.rpglife;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by Alexa on 07/02/2018.
@@ -8,52 +10,30 @@ import java.util.Date;
 
 public class Quete {
 
-    private String nom;
-    private String description;
-    private float complexite;
-    private float apprehension;
-    private int repetitionJour;
-    private int duree;
-    private Date dateDebut;
+    private int qId;
+    private String qNom;
+    private String qDescription;
+    private float qComplexite;
+    private float qApprehension;
+    private int qDuree;
+    private HashMap<String,Integer> qRepetitions ;
+    private Date qDateDebut;
+    private Date qDateFin;
 
 
-    public Quete(String n, String desc, float c, float a, int r, int dur, Date date)
-    {
-        nom = n;
-        description = desc;
-        complexite = c;
-        apprehension = a;
-        repetitionJour = r;
-        duree = dur;
-        dateDebut = date;
+    public Quete(int qId ,String qNom, String qDescription, float qComplexite, float qApprehension, int qDuree, HashMap<String, Integer> qRepetitions, Date qDateDebut) {
+        this.qId = qId;
+        this.qNom = qNom;
+        this.qDescription = qDescription;
+        this.qComplexite = qComplexite;
+        this.qApprehension = qApprehension;
+        this.qDuree = qDuree;
+        this.qRepetitions = qRepetitions;
+        this.qDateDebut = qDateDebut;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(qDateDebut);
+        cal.add(Calendar.DATE, qDuree);
+        qDateFin =  cal.getTime();
+
     }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public float getComplexite() {
-        return complexite;
-    }
-
-    public float getApprehension() {
-        return apprehension;
-    }
-
-    public int getRepetitionJour() {
-        return repetitionJour;
-    }
-
-    public int getDuree() {
-        return duree;
-    }
-
-    public Date getDateDebut() {
-        return dateDebut;
-    }
-
 }

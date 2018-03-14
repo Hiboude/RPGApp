@@ -1,5 +1,6 @@
 package hiboude.rpglife;
 
+import android.graphics.Color;
 import android.media.Image;
 
 /**
@@ -8,23 +9,14 @@ import android.media.Image;
 
 public class Competence extends Xp {
 
-    private String nom;
-    private Image img;
+    private int cId;
+    private String cNom;
+    private int cIconeicone;
 
-    public Competence(String s, Image i){
-        nom = s;
-        img = i;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public Image getImg() {
-        return img;
-    }
-
-    public void setImg(Image i) {
-        img = i;
+    public Competence(int cId, String cNom, int cIconeicone) {
+        super(100,0,1,100);
+        this.cId = cId;
+        this.cNom = cNom;
+        this.cIconeicone = cIconeicone;
     }
 }
