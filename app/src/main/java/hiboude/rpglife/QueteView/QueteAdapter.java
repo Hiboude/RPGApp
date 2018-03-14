@@ -2,6 +2,7 @@ package hiboude.rpglife.QueteView;
 
 
 import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.widget.*;
 import java.util.*;
 import android.content.*;
@@ -66,6 +67,17 @@ public class QueteAdapter extends BaseAdapter {
         tv_Piece.setText(String.valueOf(mListP.get(position).calculPiece()));
         img.setImageResource(mListP.get(position).getImage());
 
+        //Bouton supprime la quete
+        ImageButton deleteButton = (ImageButton)layoutItem.findViewById(R.id.supprimeQuete);
+        deleteButton.setTag(position);
+        deleteButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer position = (Integer)v.getTag();
+                sendSupprListener(mListP,position);
+            }
+        });
+
         tv_Nom.setTag(position);
         tv_Nom.setOnClickListener(new OnClickListener() {
 
@@ -73,7 +85,6 @@ public class QueteAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Integer position = (Integer)v.getTag();
                 sendListener(mListP.get(position), position);
-
             }
 
         });
@@ -92,11 +103,20 @@ public class QueteAdapter extends BaseAdapter {
         }
     }
 
+    private void sendSupprListener(ListeDeQuete item, int position) {
+        for(int i = mListListener.size()-1; i >= 0; i--) {
+            mListListener.get(i).supprimeQuete(item,position);
+        }
+
+    }
+
+
     /**
-     * Interface pour écouter les évènements sur le nom d'une personne
+     * Interface pour écouter les évènements
      */
     public interface QueteAdapterListener {
         public void onClickNom(Quete item, int position);
+        public void supprimeQuete(ListeDeQuete lq,int position);
     }
 
 }

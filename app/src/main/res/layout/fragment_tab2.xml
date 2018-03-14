@@ -21,10 +21,11 @@
         android:id="@+id/addQuete"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginBottom="110dp"
-        android:contentDescription="@android:string/dialog_alert_title"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="110dp"
+        android:contentDescription="@android:string/dialog_alert_title"
+        android:onClick="addXp"
         app:srcCompat="@android:drawable/ic_menu_add" />
 </RelativeLayout>

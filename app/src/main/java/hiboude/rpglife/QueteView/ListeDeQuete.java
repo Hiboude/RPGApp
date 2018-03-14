@@ -16,6 +16,10 @@ public class ListeDeQuete {
         createList();
     }
 
+    public ArrayList<Quete> getQuetes() {
+        return quetes;
+    }
+
     public Quete get(int pos) {
         return quetes.get(pos);
     }

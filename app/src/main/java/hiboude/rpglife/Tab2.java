@@ -5,9 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import hiboude.rpglife.QueteView.ListeDeQuete;
@@ -34,6 +37,10 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //Mes attribus
+    private ListView lvQuete;
+    private QueteAdapter qAdapter;
 
     public Tab2() {
         // Required empty public constructor
@@ -71,9 +78,9 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
         ListeDeQuete lq = new ListeDeQuete();
-        QueteAdapter qAdapter = new QueteAdapter(getContext(),lq);
+        qAdapter = new QueteAdapter(getContext(),lq);
 
-        ListView lvQuete = (ListView)rootView.findViewById(R.id.viewQuete);
+        lvQuete = (ListView)rootView.findViewById(R.id.viewQuete);
         lvQuete.setAdapter(qAdapter);
         qAdapter.addListener(this);
         // Inflate the layout for this fragment
@@ -108,9 +115,9 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     @Override
     public void onClickNom(Quete item, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Personne");
+        builder.setTitle(item.getNom());
 
-        builder.setMessage("Vous avez cliqué sur : "+item.getNom());
+        builder.setMessage(item.getDescription());
         builder.setPositiveButton("oui", null);
         builder.setNegativeButton("non", null);
         builder.show();
@@ -129,5 +136,20 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+        void addXp(View view);
     }
+
+    public void addQuete (View view)
+    {
+
+    }
+
+    public void supprimeQuete(ListeDeQuete lq,int position)
+    {
+        lq.getQuetes().remove(position);
+        qAdapter.notifyDataSetChanged();
+        //Ajout d'xp test
+        mListener.addXp(getView());
+    }
+
 }

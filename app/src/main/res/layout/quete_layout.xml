@@ -44,4 +44,15 @@
         android:text="nbPiece"
         app:layout_constraintStart_toEndOf="@+id/imageQuete"
         app:layout_constraintTop_toBottomOf="@+id/nombreXp" />
+
+    <ImageButton
+        android:id="@+id/supprimeQuete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="16dp"
+        android:onClick="supprimeQuete"
+        app:layout_constraintStart_toEndOf="@+id/nombrePiece"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
 </android.support.constraint.ConstraintLayout>
