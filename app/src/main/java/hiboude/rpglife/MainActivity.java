@@ -43,15 +43,19 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
         Color c = new Color();
         int color = Color.rgb(0, 240, 200);
-        Xp uXp = new Xp(100,0,1,c);
-        xpBar.setProgress(uXp.getXpActuel());
-        xpBar.setMax(uXp.getXpRequis());
+     //   Xp uXp = new Xp(100,0,1,c);
 
-        utilisateur = new Utilisateur("Hiboude",0,uXp);
-        level.setText(String.valueOf(uXp.getNiveau()));
+
+         UtilisateurManager um = new UtilisateurManager(this);
+        um.open();
+        utilisateur = um.getUtilisateur();
+        um.close();
+        xpBar.setProgress(utilisateur.getXpActuel());
+        xpBar.setMax(utilisateur.getXpRequis());
+        level.setText(String.valueOf(utilisateur.getNiveau()));
 
         //Met la couleur sur la progressbar
-        xpBar.getProgressDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        xpBar.getProgressDrawable().setColorFilter(utilisateur.getColor(), PorterDuff.Mode.SRC_IN);
 
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
@@ -89,13 +93,14 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
     }
 
-
     public void addXp(View view){
-        utilisateur.getExperience().addXp(10);
-        xpBar.setProgress(utilisateur.getExperience().getXpActuel());
-        level.setText(String.valueOf(utilisateur.getExperience().getLevel()));
+        UtilisateurManager um = new UtilisateurManager(this);
+        um.open();
+        utilisateur.addXp(10);
+        System.out.println("<<<<<<<<<<<<<<<<<<" + um.modUtilisateur(utilisateur));
+        um.close();
+        xpBar.setProgress(utilisateur.getXpActuel());
+        level.setText(String.valueOf(utilisateur.getNiveau()));
 
     }
-
-
 }

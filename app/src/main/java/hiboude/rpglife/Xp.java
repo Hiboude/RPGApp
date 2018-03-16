@@ -13,11 +13,22 @@ public class Xp {
     private int niveau;
     private int color;
 
+    public void setColor(int color) {
+
+        this.color = color;
+    }
+
+    public void setXpActuel(int xpActuel) {
+        this.xpActuel = xpActuel;
+    }
+
     public Xp(int xpR, int xpA, int lvl, int c){
         xpRequis = xpR;
         xpActuel = xpA;
         niveau = lvl;
         color = c;
+
+
     }
 
     public Xp() {

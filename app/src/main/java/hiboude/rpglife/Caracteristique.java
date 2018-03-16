@@ -24,6 +24,23 @@ public class Caracteristique extends Xp {
         return caIcone;
     }
 
+    public void setCaId(int caId) {
+        this.caId = caId;
+    }
+
+
+    public void setCaNom(String caNom) {
+        this.caNom = caNom;
+    }
+
+    public void setCaIcone(int caIcone) {
+        this.caIcone = caIcone;
+    }
+
+    public void setCaCompetences(ArrayList<Competence> caCompetences) {
+        this.caCompetences = caCompetences;
+    }
+
     public int getCaId() {
         return caId;
     }
@@ -31,12 +48,12 @@ public class Caracteristique extends Xp {
     public ArrayList<Competence> getCaCompetences() {
         return caCompetences;
     }
-    // A CHANGER LES CONSTRUCTEURS POUR RECREATION DES OBJET AVEC UN NIVEAU DEJA INSTANCIE !!!!!
     public Caracteristique() {
         super(100,0,1,100);
         caCompetences = new ArrayList<>();
-
-
+        caId=0;
+        caNom="";
+        caIcone=0;
     }
 
     public Caracteristique( int caId,String caNom, int caIcone) {

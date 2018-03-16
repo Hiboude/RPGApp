@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MySQLite extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "db.sqlite";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static MySQLite sInstance;
 
     public static synchronized MySQLite getInstance(Context context) {
@@ -27,7 +27,7 @@ public class MySQLite extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Création de la base de données
         // on exécute ici les requêtes de création des tables
-        sqLiteDatabase.execSQL(CaracteristiqueManager.CREATE_TABLE_CARACTERISTIQUE); // création table "Caracteristique"
+        sqLiteDatabase.execSQL(UtilisateurManager.CREATE_TABLE_UTILISATEUR); // création table "Utilisateur"
     }
 
     @Override
