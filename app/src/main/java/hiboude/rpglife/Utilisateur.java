@@ -8,7 +8,7 @@ public class Utilisateur extends Xp{
 
     private String pseudo;
     private int piece;
-  //  private Xp experience;
+    private Xp experience;
 
     public Utilisateur(String n, int p )
     {

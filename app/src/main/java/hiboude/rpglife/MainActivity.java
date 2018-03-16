@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         xpBar.setMax(uXp.getXpRequis());
 
         utilisateur = new Utilisateur("Hiboude",0,uXp);
-        level.setText(String.valueOf(uXp.getLevel()));
+        level.setText(String.valueOf(uXp.getNiveau()));
 
         //Met la couleur sur la progressbar
         xpBar.getProgressDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
