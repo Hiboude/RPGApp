@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -11,9 +12,12 @@ import android.widget.NumberPicker;
 import android.widget.SeekBar;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import hiboude.rpglife.QueteView.ListeDeQuete;
 
@@ -52,9 +56,13 @@ public class FormulaireQ extends AppCompatActivity {
         Description = (EditText)findViewById(R.id.queteFormDescription);
 
         Competence = (AutoCompleteTextView)findViewById(R.id.queteFormCompetence);
-        String[] competences ={};
-
-
+        CompetenceManager cm = new CompetenceManager(this);
+        cm.open();
+        final HashMap<String,Integer> competencesById = cm.competencesById();
+        ArrayList<String> nomCompetences = new ArrayList<>(competencesById.keySet());
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item,nomCompetences);
+        Competence.setThreshold(1);
+        Competence.setAdapter(adapter);
         DateDebut = (EditText)findViewById(R.id.queteFormDateDebut);
         Duree = (EditText)findViewById(R.id.queteFormDuree);
 
@@ -112,9 +120,14 @@ public class FormulaireQ extends AppCompatActivity {
                 int ImportanceText = Importance.getProgress();
                 int DureeText = Integer.valueOf(String.valueOf(Duree.getText()));
                 HashMap<String, Integer> RepetitionText = null;
-                Date DateDebutText = (Date)(DateDebut.getText());
+                Date DateDebutText = null;
+                try {
+                    DateDebutText = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).parse(String.valueOf(DateDebut.getText()));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-                Quete nouvelle = new Quete(id,1,NomText,DescriptionText,ComplexiteText,ImportanceText,ApprehensionText,DureeText,RepetitionText,DateDebutText);
+                Quete nouvelle = new Quete(id,competencesById.get(String.valueOf(Competence.getText())),NomText,DescriptionText,ComplexiteText,ImportanceText,ApprehensionText,DureeText,RepetitionText,DateDebutText);
                 Intent i = new Intent();
                 i.putExtra("NouvQuete",nouvelle);
                 FormulaireQ.this.setResult(1,i);

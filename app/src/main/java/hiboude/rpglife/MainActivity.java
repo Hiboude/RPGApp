@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         int color = Color.rgb(0, 240, 200);
      //   Xp uXp = new Xp(100,0,1,c);
 
-
+        //Initialisation de la base de données
+       // initDb();
          UtilisateurManager um = new UtilisateurManager(this);
         um.open();
         utilisateur = um.getUtilisateur();
@@ -46,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         xpBar.setMax(utilisateur.getXpRequis());
         level.setText(String.valueOf(utilisateur.getNiveau()));
 
-        //Initialisation de la base de données
-        initDb();
+
 
 
 
@@ -103,6 +103,11 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
     private void initDb()
     {
+        UtilisateurManager um = new UtilisateurManager(this);
+        Utilisateur u = new Utilisateur("Hiboude",100);
+        um.open();
+        um.addUtilisateur(u);
+        um.close();
         //Ajout dans Caracteristique
 
         CaracteristiqueManager caracteristiqueManager = new CaracteristiqueManager(this);

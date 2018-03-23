@@ -80,7 +80,7 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
-        lq = new ListeDeQuete();
+        lq = new ListeDeQuete(getContext());
         qAdapter = new QueteAdapter(getContext(),lq);
 
         lvQuete = (ListView)rootView.findViewById(R.id.viewQuete);
@@ -168,6 +168,10 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
 
     public void supprimeQuete(ListeDeQuete lq,int position)
     {
+        QueteManager qm = new QueteManager(getContext());
+        qm.open();
+        qm.supQuete(lq.get(position));
+        qm.close();
         lq.getQuetes().remove(position);
         qAdapter.notifyDataSetChanged();
         //Ajout d'xp test
@@ -177,6 +181,10 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     public void addQuete(ListeDeQuete lq, Quete q)
     {
         lq.addQuete(q);
+        QueteManager qm = new QueteManager(getContext());
+        qm.open();
+        qm.addQuete(q);
+        qm.close();
         qAdapter.notifyDataSetChanged();
     }
 

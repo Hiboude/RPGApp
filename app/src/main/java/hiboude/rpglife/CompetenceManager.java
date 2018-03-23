@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by lucas on 14/03/2018.
@@ -156,5 +157,21 @@ public class CompetenceManager {
             }
         }
         return competences;
+    }
+    public HashMap<String,Integer> competencesById(){
+        // sélection tous les couples cNom:cId de la table
+        Cursor c = db.rawQuery("SELECT "+KEY_ID_COMPETENCE +","+KEY_NOM_COMPETENCE+" FROM " + TABLE_NAME , null);
+        HashMap<String,Integer> competencesById = new HashMap<>();
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    int cId = c.getInt(c.getColumnIndex("cId"));
+                    String cNom = c.getString(c.getColumnIndex("cNom"));
+                    competencesById.put(cNom,cId);
+
+                } while (c.moveToNext());
+            }
+        }
+        return competencesById;
     }
 }

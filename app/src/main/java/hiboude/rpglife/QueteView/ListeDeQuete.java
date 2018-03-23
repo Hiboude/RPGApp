@@ -1,8 +1,12 @@
 package hiboude.rpglife.QueteView;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
+import hiboude.rpglife.CompetenceManager;
 import hiboude.rpglife.Quete;
+import hiboude.rpglife.QueteManager;
 import hiboude.rpglife.R;
 
 /**
@@ -12,9 +16,9 @@ import hiboude.rpglife.R;
 public class ListeDeQuete {
     private ArrayList<Quete> quetes;
 
-    public ListeDeQuete() {
+    public ListeDeQuete(Context context) {
         quetes = new ArrayList<Quete>();
-        createList();
+        createList(context);
     }
 
     public ArrayList<Quete> getQuetes() {
@@ -29,7 +33,11 @@ public class ListeDeQuete {
         return quetes.size();
     }
 
-    private void createList() {
+    private void createList(Context context) {
+        QueteManager qm = new QueteManager(context);
+        qm.open();
+        quetes = qm.getQuetes();
+        qm.close();
 
     }
 
