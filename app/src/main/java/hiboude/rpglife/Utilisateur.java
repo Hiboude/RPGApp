@@ -11,6 +11,7 @@ public class Utilisateur extends Xp{
     private int uId;
     private String uPseudo;
     private int uPiece;
+    private boolean estInscrit = false;
 
     public Utilisateur(String n, int p )
     {

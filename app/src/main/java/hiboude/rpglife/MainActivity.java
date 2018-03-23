@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         level.setText(String.valueOf(utilisateur.getNiveau()));
 
         //Met la couleur sur la progressbar
-        xpBar.getProgressDrawable().setColorFilter(utilisateur.getColor(), PorterDuff.Mode.SRC_IN);
+        xpBar.getProgressDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
 
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
