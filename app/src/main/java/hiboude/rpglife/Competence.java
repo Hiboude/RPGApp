@@ -51,6 +51,10 @@ public class Competence extends Xp {
 
     }
 
+    public void setcQuetes(ArrayList<Quete> cQuetes) {
+        this.cQuetes = cQuetes;
+    }
+
     public int getcIcone() {
         return cIcone;
     }

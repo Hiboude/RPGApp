@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -137,8 +138,34 @@ public class QueteManager {
         return q;
     }
 
-    public Cursor getQuetes(int cId) {
+    public ArrayList<Quete> getQuetes(int cId) {
         // sélection de toutes les quetes associées à une compétences de la table
-        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + KEY_ID_COMPETENCE + "=" +cId , null);
+        Cursor c = db.rawQuery("SELECT "+KEY_ID_QUETE +" FROM " + TABLE_NAME + " WHERE " + KEY_ID_COMPETENCE + "=" +cId , null);
+        ArrayList<Quete> quetes = new ArrayList<>();
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    int qId = c.getInt(c.getColumnIndex("qId"));
+                    quetes.add(getQuete(qId));
+
+                } while (c.moveToNext());
+            }
+        }
+        return quetes;
+    }
+    public ArrayList<Quete> getQuetes() {
+        // sélection de toutes les quetes associées à une compétences de la table
+        Cursor c = db.rawQuery("SELECT "+KEY_ID_QUETE +" FROM " + TABLE_NAME , null);
+        ArrayList<Quete> quetes = new ArrayList<>();
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    int qId = c.getInt(c.getColumnIndex("qId"));
+                    quetes.add(getQuete(qId));
+
+                } while (c.moveToNext());
+            }
+        }
+        return quetes;
     }
 }
