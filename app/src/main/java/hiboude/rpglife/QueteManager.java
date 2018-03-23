@@ -63,7 +63,6 @@ public class QueteManager {
         // Ajout d'un enregistrement dans la table
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_QUETE, quete.getqId());
         values.put(KEY_ID_COMPETENCE, quete.getqCId());
         values.put(KEY_NOM_QUETE, quete.getqNom());
         values.put(KEY_COMPLEXITE_QUETE, quete.getqComplexite());
@@ -83,7 +82,6 @@ public class QueteManager {
         // valeur de retour : (int) nombre de lignes affectées par la requête
 
         ContentValues values = new ContentValues();
-        values.put(KEY_ID_QUETE, quete.getqId());
         values.put(KEY_ID_COMPETENCE, quete.getqCId());
         values.put(KEY_NOM_QUETE, quete.getqNom());
         values.put(KEY_COMPLEXITE_QUETE, quete.getqComplexite());
