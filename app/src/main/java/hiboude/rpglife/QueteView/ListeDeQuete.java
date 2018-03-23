@@ -2,6 +2,7 @@ package hiboude.rpglife.QueteView;
 
 import java.util.ArrayList;
 
+import hiboude.rpglife.Quete;
 import hiboude.rpglife.R;
 
 /**
@@ -29,15 +30,11 @@ public class ListeDeQuete {
     }
 
     private void createList() {
-        quetes.add(new Quete("n0","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n1","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n2","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n3","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n4","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n5","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n6","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n7","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n8","d", R.mipmap.ic_launcher));
-        quetes.add(new Quete("n9","d", R.mipmap.ic_launcher));
+
     }
+
+    public void addQuete(Quete q) {
+        getQuetes().add(q);
+    }
+
 }

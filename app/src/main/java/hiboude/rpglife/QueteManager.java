@@ -30,13 +30,13 @@ public class QueteManager {
             " (" +
             " " + KEY_ID_QUETE + " INTEGER primary key," +
             " " + KEY_ID_COMPETENCE + " INTEGER ," +
-            " " + KEY_NOM_QUETE + " TEXT" +
-            " " + KEY_COMPLEXITE_QUETE + " INTEGER" +
-            " " + KEY_APPREHENSION_QUETE + " INTEGER" +
-            " " + KEY_IMPORTANCE_QUETE + " INTEGER" +
-            " " + KEY_DUREE_QUETE + " INTEGER" +
-            " " + KEY_DATEDEBUT_QUETE + " TEXT" +
-            " " + KEY_DATEFIN_QUETE + " TEXT" +
+            " " + KEY_NOM_QUETE + " TEXT," +
+            " " + KEY_COMPLEXITE_QUETE + " INTEGER," +
+            " " + KEY_APPREHENSION_QUETE + " INTEGER," +
+            " " + KEY_IMPORTANCE_QUETE + " INTEGER," +
+            " " + KEY_DUREE_QUETE + " INTEGER," +
+            " " + KEY_DATEDEBUT_QUETE + " TEXT," +
+            " " + KEY_DATEFIN_QUETE + " TEXT," +
             " " + "FOREIGN KEY("+KEY_ID_COMPETENCE+") REFERENCES Competence(cId)" +
             ");";
 

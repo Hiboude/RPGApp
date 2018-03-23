@@ -1,26 +1,18 @@
 package hiboude.rpglife;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import hiboude.rpglife.QueteView.Quete;
-import hiboude.rpglife.R;
-import hiboude.rpglife.QueteView.ListeDeQuete;
-import hiboude.rpglife.QueteView.QueteAdapter;
 
 
 public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentInteractionListener,Tab2.OnFragmentInteractionListener,Tab3.OnFragmentInteractionListener{
@@ -54,14 +46,19 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         xpBar.setMax(utilisateur.getXpRequis());
         level.setText(String.valueOf(utilisateur.getNiveau()));
 
+        //Initialisation de la base de données
+        initDb();
+
+
+
         //Met la couleur sur la progressbar
         xpBar.getProgressDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
 
 
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Quête"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText("Compétence"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager)findViewById(R.id.pager);
@@ -103,4 +100,27 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         level.setText(String.valueOf(utilisateur.getNiveau()));
 
     }
+
+    private void initDb()
+    {
+        //Ajout dans Caracteristique
+
+        CaracteristiqueManager caracteristiqueManager = new CaracteristiqueManager(this);
+        caracteristiqueManager.open();
+
+        Caracteristique force = new Caracteristique(1,"Force",R.mipmap.biceps);
+        caracteristiqueManager.addCaracteristique(force);
+
+        caracteristiqueManager.close();
+
+        CompetenceManager competenceManager = new CompetenceManager(this);
+        competenceManager.open();
+
+        Competence musculation = new Competence(1,1,"Musculation",R.mipmap.weight);
+        competenceManager.addCompetence(musculation);
+
+        competenceManager.close();
+
+    }
+
 }

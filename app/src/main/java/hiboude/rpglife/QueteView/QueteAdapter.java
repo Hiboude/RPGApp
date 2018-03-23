@@ -11,6 +11,9 @@ import android.graphics.*;
 import android.view.View.*;
 
 
+import hiboude.rpglife.Competence;
+import hiboude.rpglife.CompetenceManager;
+import hiboude.rpglife.Quete;
 import hiboude.rpglife.R;
 
 /**
@@ -26,6 +29,8 @@ public class QueteAdapter extends BaseAdapter {
     //Un mécanisme pour gérer l'affichage graphique depuis un layout XML
     private LayoutInflater mInflater;
 
+    //Manager
+    private CompetenceManager competenceManager = new CompetenceManager(mContext);
 
     public QueteAdapter(Context context, ListeDeQuete aListP) {
         mContext = context;
@@ -62,10 +67,13 @@ public class QueteAdapter extends BaseAdapter {
         ImageView img = layoutItem.findViewById(R.id.imageQuete);
 
         //(3) : Renseignement des valeurs
-        tv_Nom.setText(mListP.get(position).getNom());
+        tv_Nom.setText(mListP.get(position).getqNom());
         tv_Xp.setText(String.valueOf(mListP.get(position).calculXp()));
         tv_Piece.setText(String.valueOf(mListP.get(position).calculPiece()));
-        img.setImageResource(mListP.get(position).getImage());
+        competenceManager.open();
+        Competence c = competenceManager.getCompetence(mListP.get(position).getqCId(),mContext);
+        img.setImageResource(c.getcIcone());
+        competenceManager.close();
 
         //Bouton supprime la quete
         ImageButton deleteButton = (ImageButton)layoutItem.findViewById(R.id.supprimeQuete);

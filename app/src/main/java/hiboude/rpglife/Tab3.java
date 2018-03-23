@@ -7,6 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+        import android.widget.ImageButton;
+        import android.widget.ListView;
+
+        import hiboude.rpglife.QueteView.ListeDeQuete;
+        import hiboude.rpglife.QueteView.QueteAdapter;
+
 
 
 /**
@@ -17,7 +23,7 @@ import android.view.ViewGroup;
  * Use the {@link Tab3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Tab3 extends Fragment {
+public class Tab3 extends Fragment implements CompetenceAdapter.CompetenceAdapterListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -28,6 +34,11 @@ public class Tab3 extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    //Mes attribus
+    private ListView lvCompetence;
+    private CompetenceAdapter cAdapter;
+    private ListeDeCompetence lc;
 
     public Tab3() {
         // Required empty public constructor
@@ -63,8 +74,15 @@ public class Tab3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_tab3, container, false);
+        lc = new ListeDeCompetence(getContext());
+        cAdapter = new CompetenceAdapter(getContext(),lc);
+
+        lvCompetence = (ListView)rootView.findViewById(R.id.viewCompetence);
+        lvCompetence.setAdapter(cAdapter);
+        cAdapter.addListener(this);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab3, container, false);
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

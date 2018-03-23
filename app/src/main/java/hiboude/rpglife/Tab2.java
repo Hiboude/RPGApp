@@ -1,6 +1,7 @@
 package hiboude.rpglife;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import hiboude.rpglife.Quete;
 import hiboude.rpglife.QueteView.ListeDeQuete;
-import hiboude.rpglife.QueteView.Quete;
 import hiboude.rpglife.QueteView.QueteAdapter;
 
 
@@ -41,6 +42,8 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     //Mes attribus
     private ListView lvQuete;
     private QueteAdapter qAdapter;
+    private ImageButton add;
+    private ListeDeQuete lq;
 
     public Tab2() {
         // Required empty public constructor
@@ -77,13 +80,21 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
-        ListeDeQuete lq = new ListeDeQuete();
+        lq = new ListeDeQuete();
         qAdapter = new QueteAdapter(getContext(),lq);
 
         lvQuete = (ListView)rootView.findViewById(R.id.viewQuete);
         lvQuete.setAdapter(qAdapter);
         qAdapter.addListener(this);
         // Inflate the layout for this fragment
+        //Bouton qui lance l'activité
+        add = (ImageButton)rootView.findViewById(R.id.addQuete);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                formulaireQuete(view);
+            }
+        });
         return rootView;
 
     }
@@ -115,9 +126,9 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
     @Override
     public void onClickNom(Quete item, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(item.getNom());
+        builder.setTitle(item.getqNom());
 
-        builder.setMessage(item.getDescription());
+        builder.setMessage(item.getqDescription());
         builder.setPositiveButton("oui", null);
         builder.setNegativeButton("non", null);
         builder.show();
@@ -139,9 +150,20 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
         void addXp(View view);
     }
 
-    public void addQuete (View view)
+    public void formulaireQuete(View view)
     {
+        Intent i = new Intent(getActivity(),FormulaireQ.class);
+        startActivityForResult(i,1);
+    }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if( resultCode==1 ) {
+            Quete q = (Quete) data.getSerializableExtra("NouvQuete");
+            addQuete(lq,q);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void supprimeQuete(ListeDeQuete lq,int position)
@@ -150,6 +172,12 @@ public class Tab2 extends Fragment implements QueteAdapter.QueteAdapterListener 
         qAdapter.notifyDataSetChanged();
         //Ajout d'xp test
         mListener.addXp(getView());
+    }
+
+    public void addQuete(ListeDeQuete lq, Quete q)
+    {
+        lq.addQuete(q);
+        qAdapter.notifyDataSetChanged();
     }
 
 }

@@ -1,5 +1,6 @@
 package hiboude.rpglife;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Locale;
  * Created by Alexa on 07/02/2018.
  */
 
-public class Quete {
+public class Quete implements Serializable {
 
     private int qId;
     private String qNom;
@@ -139,5 +140,11 @@ public class Quete {
 
     public void setqDateFin(Date qDateFin) {
         this.qDateFin = qDateFin;
+    }
+
+    public int calculXp() { return 10;
+    }
+
+    public int calculPiece() { return 5;
     }
 }

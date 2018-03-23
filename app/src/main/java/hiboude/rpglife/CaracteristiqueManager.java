@@ -21,11 +21,11 @@ public class CaracteristiqueManager {
     public static final String CREATE_TABLE_CARACTERISTIQUE = "CREATE TABLE " + TABLE_NAME +
             " (" +
             " " + KEY_ID_CARACTERISTIQUE + " INTEGER primary key," +
-            " " + KEY_NOM_CARACTERISTIQUE + " TEXT" +
-            " " + KEY_ICONE_CARACTERISTIQUE + " INTEGER" +
-            " " + KEY_COLOR_CARACTERISTIQUE + " INTEGER" +
-            " " + KEY_XPREQUIS_CARACTERISTIQUE + " INTEGER" +
-            " " + KEY_XPACTUELLE_CARACTERISTIQUE + " INTEGER" +
+            " " + KEY_NOM_CARACTERISTIQUE + " TEXT," +
+            " " + KEY_ICONE_CARACTERISTIQUE + " INTEGER," +
+            " " + KEY_COLOR_CARACTERISTIQUE + " INTEGER," +
+            " " + KEY_XPREQUIS_CARACTERISTIQUE + " INTEGER," +
+            " " + KEY_XPACTUELLE_CARACTERISTIQUE + " INTEGER," +
             " " + KEY_NIVEAU_CARACTERISTIQUE + " INTEGER" +
             ");";
 

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#666666">
+
+    <SeekBar
+        android:id="@+id/seekBarComplexite"
+        android:layout_width="237dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="396dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBarImportance"
+        android:layout_width="237dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarComplexite" />
+
+    <SeekBar
+        android:id="@+id/seekBarApprehension"
+        android:layout_width="237dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarImportance" />
+
+    <TextView
+        android:id="@+id/queteFormTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Nom quête :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:text="Description : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="120dp"
+        android:text="Compétence : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="170dp"
+        android:text="Date début : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="215dp"
+        android:text="Durée : "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="400dp"
+        android:text="Complexité :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="446dp"
+        android:text="Importance :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/queteFormTextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="492dp"
+        android:text="Appréhension :"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/queteFormNom"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="13dp"
+        android:height="20dp"
+        android:ems="10"
+        android:hint="Repoussez-les"
+        android:inputType="textPersonName"
+        android:singleLine="true"
+        app:layout_constraintStart_toEndOf="@+id/queteFormTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/queteFormDescription"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="64dp"
+        android:height="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/queteFormTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/queteFormValid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/checked" />
+
+    <NumberPicker
+        android:id="@+id/queteFormL"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <NumberPicker
+        android:id="@+id/queteFormMa"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/queteFormL"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <NumberPicker
+        android:id="@+id/queteFormMe"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/queteFormMa"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <NumberPicker
+        android:id="@+id/queteFormJ"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/queteFormMe"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <NumberPicker
+        android:id="@+id/queteFormV"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/queteFormJ"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <NumberPicker
+        android:id="@+id/queteFormS"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/queteFormV"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <NumberPicker
+        android:id="@+id/queteFormD"
+        android:layout_width="32dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/queteFormS"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="148dp"
+        android:text="L"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
+        android:text="M"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
+        android:text="M"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
+        android:text="J"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
+        android:text="V"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
+        android:text="S"
+        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="32dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="148dp"
+        android:text="D"
+        app:layout_constraintStart_toEndOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <AutoCompleteTextView
+        android:id="@+id/queteFormCompetence"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDescription" />
+
+    <EditText
+        android:id="@+id/queteFormDateDebut"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="dd/mm/yyyy"
+        android:inputType="date"
+        app:layout_constraintStart_toEndOf="@+id/queteFormTextView7"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormCompetence" />
+
+    <EditText
+        android:id="@+id/queteFormDuree"
+        android:layout_width="236dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:hint="nombre de jour"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/queteFormTextView8"
+        app:layout_constraintTop_toBottomOf="@+id/queteFormDateDebut" />
+
+</android.support.constraint.ConstraintLayout>

@@ -25,12 +25,12 @@ public class CompetenceManager {
             " (" +
             " " + KEY_ID_COMPETENCE + " INTEGER primary key," +
             " " + KEY_ID_CARACTERISIQUE + " INTEGER ," +
-            " " + KEY_NOM_COMPETENCE + " TEXT" +
-            " " + KEY_ICONE_COMPETENCE + " INTEGER" +
-            " " + KEY_COLOR_COMPETENCE + " INTEGER" +
-            " " + KEY_XPREQUIS_COMPETENCE + " INTEGER" +
-            " " + KEY_XPACTUELLE_COMPETENCE + " INTEGER" +
-            " " + KEY_NIVEAU_COMPETENCE + " INTEGER" +
+            " " + KEY_NOM_COMPETENCE + " TEXT," +
+            " " + KEY_ICONE_COMPETENCE + " INTEGER," +
+            " " + KEY_COLOR_COMPETENCE + " INTEGER," +
+            " " + KEY_XPREQUIS_COMPETENCE + " INTEGER," +
+            " " + KEY_XPACTUELLE_COMPETENCE + " INTEGER," +
+            " " + KEY_NIVEAU_COMPETENCE + " INTEGER," +
             " " + "FOREIGN KEY("+KEY_ID_CARACTERISIQUE+") REFERENCES Caracteristique(caId)" +
             ");";
 
@@ -129,6 +129,22 @@ public class CompetenceManager {
     public ArrayList<Competence> getCompetences(int cCaId,Context context) {
         // sélection de toutes les compétences associées à une caracteristique de la table
         Cursor c = db.rawQuery("SELECT "+KEY_ID_COMPETENCE +" FROM " + TABLE_NAME + " WHERE " + KEY_ID_CARACTERISIQUE + "=" +cCaId , null);
+        ArrayList<Competence> competences = new ArrayList<>();
+        if (c != null) {
+            if (c.moveToFirst()) {
+                do {
+                    int cId = c.getInt(c.getColumnIndex("cId"));
+                    competences.add(getCompetence(cId,context));
+
+                } while (c.moveToNext());
+            }
+        }
+        return competences;
+    }
+
+    public ArrayList<Competence> getCompetences(Context context) {
+        // sélection de toutes les compétences associées à une caracteristique de la table
+        Cursor c = db.rawQuery("SELECT "+KEY_ID_COMPETENCE +" FROM " + TABLE_NAME , null);
         ArrayList<Competence> competences = new ArrayList<>();
         if (c != null) {
             if (c.moveToFirst()) {
