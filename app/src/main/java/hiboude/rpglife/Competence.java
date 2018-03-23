@@ -70,4 +70,5 @@ public class Competence extends Xp {
     public void setcIcone(int cIcone) {
         this.cIcone = cIcone;
     }
+
 }
